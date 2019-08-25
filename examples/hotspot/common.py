@@ -9,7 +9,7 @@ import os.path
 
 
 tiny_font = ImageFont.truetype(os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "..", "fonts", "FreePixel.ttf")), 10)
+    os.path.dirname(__file__), "..", "fonts", "LUCON.TTF")), 12)
 
 
 def bytes2human(n, fmt="{0:0.2f}"):
@@ -39,4 +39,4 @@ def right_text(draw, y, width, margin, text):
 
 def title_text(draw, y, width, text):
     x = (width - draw.textsize(text)[0]) / 2
-    draw.text((x, y), text=text, fill="yellow")
+    draw.text((x, y), text=text, font=tiny_font, fill="white")
