@@ -15,17 +15,19 @@ from luma.core.sprite_system import framerate_regulator
 
 
 def main():
-    regulator = framerate_regulator(fps=10)
+    regulator = framerate_regulator(fps=25)
     img_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
         'images', 'cardano-loader_128x128.gif'))
     agif = Image.open(img_path)
     size = [min(*device.size)] * 2
     posn = ((device.width - size[0]) // 2, device.height - size[1])
 
-    while True:
+    counter = 0
+    while counter < 3:
+		counter +=1
         for frame in ImageSequence.Iterator(agif):
             with regulator:
-                background = Image.new("RGB", device.size, "white")
+                background = Image.new("RGB", device.size, "black")
                 background.paste(frame.resize(size, resample=Image.LANCZOS), posn)
                 device.display(background.convert(device.mode))
 
